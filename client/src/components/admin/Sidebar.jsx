@@ -1,3 +1,95 @@
+// import { NavLink } from "react-router-dom";
+
+// import {
+//   LayoutDashboard,
+//   CalendarDays,
+//   Users,
+//   UserRoundCheck,
+//   ClipboardCheck,
+//   BarChart3,
+//   MessageSquareText,
+//   Image,
+//   ListTodo,
+//   FileText,
+//   UserPlus,
+//   UserCircle,
+//   LogOut,
+// } from "lucide-react";
+
+
+// const menuItems = [
+//   { label: "Dashboard", icon: LayoutDashboard, path: "/" },
+//   { label: "Events", icon: CalendarDays, path: "/events" },
+//   { label: "Volunteers", icon: Users, path: "/volunteers" },
+//   { label: "Participants", icon: UserRoundCheck, path: "/participants" },
+//   { label: "Attendance", icon: ClipboardCheck, path: "/attendance" },
+//   { label: "Analysis", icon: BarChart3, path: "/analysis" },
+//   { label: "Feedback", icon: MessageSquareText, path: "/feedback" },
+//   { label: "Gallery", icon: Image, path: "/gallery" },
+//   { label: "Task Progress", icon: ListTodo, path: "/tasks" },
+//   { label: "Reports", icon: FileText, path: "/reports" },
+//   { label: "Add Volunteer", icon: UserPlus, path: "/add-volunteer" },
+// ];
+
+// function Sidebar() {
+//   return (
+//     <aside className="sidebar">
+//       <div className="brand">
+//         <div className="brand-logo">A</div>
+//         <div>
+//           <h1>AXON</h1>
+//           <p>Admin Portal</p>
+//         </div>
+//       </div>
+
+//       <div className="admin-profile">
+//         <div className="profile-avatar">A</div>
+//         <div>
+//           <strong>Admin</strong>
+//           <span>Administrator</span>
+//         </div>
+//       </div>
+
+//       <nav className="sidebar-nav">
+//         <div className="nav-section-title">MAIN MENU</div>
+
+//         {menuItems.map((item) => {
+//   const Icon = item.icon;
+
+//   return (
+//     <NavLink
+//       key={item.label}
+//       to={item.path}
+//       className={({ isActive }) =>
+//         `nav-item ${isActive ? "active" : ""}`
+//       }
+//     >
+//       <Icon size={17} strokeWidth={1.8} />
+//       <span>{item.label}</span>
+//     </NavLink>
+//   );
+// })}
+//       </nav>
+
+//       <div className="sidebar-bottom">
+//         <button className="nav-item">
+//           <UserCircle size={17} strokeWidth={1.8} />
+//           <span>Profile</span>
+//         </button>
+
+//         <button className="nav-item logout">
+//           <LogOut size={17} strokeWidth={1.8} />
+//           <span>Logout</span>
+//         </button>
+//       </div>
+//     </aside>
+//   );
+// }
+
+// export default Sidebar;
+
+import { NavLink } from "react-router-dom";
+
 import {
   LayoutDashboard,
   CalendarDays,
@@ -12,72 +104,113 @@ import {
   UserPlus,
   UserCircle,
   LogOut,
+  X,
 } from "lucide-react";
 
 const menuItems = [
-  { label: "Dashboard", icon: LayoutDashboard },
-  { label: "Events", icon: CalendarDays },
-  { label: "Volunteers", icon: Users },
-  { label: "Participants", icon: UserRoundCheck },
-  { label: "Attendance", icon: ClipboardCheck },
-  { label: "Analysis", icon: BarChart3 },
-  { label: "Feedback", icon: MessageSquareText },
-  { label: "Gallery", icon: Image },
-  { label: "Task Progress", icon: ListTodo },
-  { label: "Reports", icon: FileText },
-  { label: "Add Volunteer", icon: UserPlus },
+  { label: "Dashboard", icon: LayoutDashboard, path: "/" },
+  { label: "Events", icon: CalendarDays, path: "/events" },
+  { label: "Volunteers", icon: Users, path: "/volunteers" },
+  { label: "Participants", icon: UserRoundCheck, path: "/participants" },
+  { label: "Attendance", icon: ClipboardCheck, path: "/attendance" },
+  { label: "Analysis", icon: BarChart3, path: "/analysis" },
+  { label: "Feedback", icon: MessageSquareText, path: "/feedback" },
+  { label: "Gallery", icon: Image, path: "/gallery" },
+  { label: "Task Progress", icon: ListTodo, path: "/tasks" },
+  { label: "Reports", icon: FileText, path: "/reports" },
+  { label: "Add Volunteer", icon: UserPlus, path: "/add-volunteer" },
 ];
 
-function Sidebar() {
+function Sidebar({ isOpen, onClose }) {
   return (
-    <aside className="sidebar">
+    <aside className={`sidebar ${isOpen ? "sidebar-open" : ""}`}>
+
+      {/* Brand */}
       <div className="brand">
         <div className="brand-logo">A</div>
+
         <div>
           <h1>AXON</h1>
           <p>Admin Portal</p>
         </div>
+
+        {/* Mobile close button */}
+        <button
+          className="sidebar-close"
+          onClick={onClose}
+          aria-label="Close menu"
+        >
+          <X size={20} />
+        </button>
       </div>
 
+      {/* Admin profile */}
       <div className="admin-profile">
         <div className="profile-avatar">A</div>
+
         <div>
           <strong>Admin</strong>
           <span>Administrator</span>
         </div>
       </div>
 
+      {/* Navigation */}
       <nav className="sidebar-nav">
-        <div className="nav-section-title">MAIN MENU</div>
 
-        {menuItems.map((item, index) => {
+        <div className="nav-section-title">
+          MAIN MENU
+        </div>
+
+        {menuItems.map((item) => {
           const Icon = item.icon;
 
           return (
-            <button
+            <NavLink
               key={item.label}
-              className={`nav-item ${index === 0 ? "active" : ""}`}
+              to={item.path}
+              onClick={onClose}
+              className={({ isActive }) =>
+                `nav-item ${isActive ? "active" : ""}`
+              }
             >
               <Icon size={17} strokeWidth={1.8} />
               <span>{item.label}</span>
-            </button>
+            </NavLink>
           );
         })}
+
       </nav>
 
+      {/* Bottom navigation */}
       <div className="sidebar-bottom">
-        <button className="nav-item">
+
+        <NavLink
+          to="/profile"
+          onClick={onClose}
+          className={({ isActive }) =>
+            `nav-item ${isActive ? "active" : ""}`
+          }
+        >
           <UserCircle size={17} strokeWidth={1.8} />
           <span>Profile</span>
-        </button>
+        </NavLink>
 
-        <button className="nav-item logout">
+        <button
+          className="nav-item logout"
+          onClick={() => {
+            onClose();
+            // Logout functionality will be added later
+          }}
+        >
           <LogOut size={17} strokeWidth={1.8} />
           <span>Logout</span>
         </button>
+
       </div>
+
     </aside>
   );
 }
 
 export default Sidebar;
+

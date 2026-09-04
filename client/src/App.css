@@ -1,59 +1,130 @@
-.admin-layout {
-  display: flex;
-  min-height: 100vh;
+/* ========================================
+   AXON ADMIN PANEL
+   GLOBAL STYLES
+   ======================================== */
+
+
+/* ========================================
+   GLOBAL RESET
+   ======================================== */
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-height: 100%;
+}
+
+body {
+  overflow-x: hidden;
   background: #f6f6f8;
 }
 
-/* SIDEBAR */
+button,
+input {
+  font: inherit;
+}
+
+
+/* ========================================
+   ADMIN LAYOUT
+   ======================================== */
+
+.admin-layout {
+  display: flex;
+  min-height: 100vh;
+  width: 100%;
+  background: #f6f6f8;
+}
+
+
+/* ========================================
+   SIDEBAR
+   ======================================== */
 
 .sidebar {
   width: 245px;
   min-height: 100vh;
+
   background: #21164f;
   color: white;
+
   padding: 20px 14px;
+
   display: flex;
   flex-direction: column;
+
   flex-shrink: 0;
 }
+
+
+/* ========================================
+   BRAND
+   ======================================== */
 
 .brand {
   display: flex;
   align-items: center;
   gap: 10px;
+
   padding: 4px 9px 20px;
 }
 
 .brand-logo {
   width: 34px;
   height: 34px;
+
   border-radius: 8px;
+
   background: #6d3fd1;
+
   display: flex;
   align-items: center;
   justify-content: center;
+
   font-weight: 700;
   font-size: 18px;
+
+  flex-shrink: 0;
 }
 
 .brand h1 {
+  margin: 0;
+
   font-size: 17px;
+  font-weight: 700;
+
   letter-spacing: 0.4px;
 }
 
 .brand p {
+  margin: 2px 0 0;
+
   font-size: 10px;
   color: #bdb5d8;
-  margin-top: 2px;
 }
+
+
+/* ========================================
+   ADMIN PROFILE
+   ======================================== */
 
 .admin-profile {
   display: flex;
   align-items: center;
   gap: 10px;
+
   padding: 12px 10px;
   margin-bottom: 14px;
+
   background: rgba(255, 255, 255, 0.07);
+
   border-radius: 8px;
 }
 
@@ -62,21 +133,28 @@
   display: flex;
   align-items: center;
   justify-content: center;
+
   border-radius: 50%;
+
   font-weight: 600;
+
+  flex-shrink: 0;
 }
 
 .profile-avatar {
   width: 32px;
   height: 32px;
+
   background: #d9d2ed;
   color: #39236e;
+
   font-size: 12px;
 }
 
 .admin-profile strong,
 .header-admin strong {
   display: block;
+
   font-size: 12px;
   font-weight: 600;
 }
@@ -84,10 +162,18 @@
 .admin-profile span,
 .header-admin span {
   display: block;
+
   color: #aaa2c5;
+
   font-size: 10px;
+
   margin-top: 2px;
 }
+
+
+/* ========================================
+   SIDEBAR NAVIGATION
+   ======================================== */
 
 .sidebar-nav {
   flex: 1;
@@ -95,25 +181,56 @@
 
 .nav-section-title {
   color: #81799e;
+
   font-size: 9px;
   font-weight: 600;
+
   padding: 7px 12px 8px;
+
   letter-spacing: 0.7px;
 }
 
 .nav-item {
   width: 100%;
+
   display: flex;
   align-items: center;
+
   gap: 11px;
+
   padding: 9px 11px;
   margin-bottom: 2px;
+
   color: #d1cce0;
   background: transparent;
+
   border-radius: 6px;
+  border: none;
+
   text-align: left;
+
   font-size: 11px;
-  transition: 0.2s ease;
+
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
+
+  cursor: pointer;
+
+  text-decoration: none;
+}
+
+/* Remove underline from NavLink */
+
+.nav-item,
+.nav-item:visited,
+.nav-item:hover,
+.nav-item:active {
+  text-decoration: none;
+}
+
+.nav-item:visited {
+  color: #d1cce0;
 }
 
 .nav-item:hover {
@@ -132,6 +249,7 @@
 
 .sidebar-bottom {
   border-top: 1px solid rgba(255, 255, 255, 0.1);
+
   padding-top: 10px;
   margin-top: 10px;
 }
@@ -140,43 +258,68 @@
   color: #c7bfdc;
 }
 
-/* MAIN AREA */
+
+/* ========================================
+   MAIN AREA
+   ======================================== */
 
 .main-area {
   flex: 1;
+
   min-width: 0;
+  width: 100%;
 }
 
-/* HEADER */
+
+/* ========================================
+   HEADER
+   ======================================== */
 
 .top-header {
   height: 66px;
+
   background: white;
+
   border-bottom: 1px solid #e9e7ed;
+
   display: flex;
   align-items: center;
   justify-content: space-between;
+
   padding: 0 28px;
+
+  gap: 15px;
 }
 
 .search-box {
   width: 340px;
   height: 36px;
+
   display: flex;
   align-items: center;
+
   gap: 9px;
+
   padding: 0 12px;
+
   border: 1px solid #e2dfe8;
   border-radius: 6px;
+
   color: #8e8997;
+
+  flex-shrink: 1;
 }
 
 .search-box input {
+  width: 100%;
+
   border: none;
   outline: none;
-  width: 100%;
+
   font-size: 11px;
   color: #393641;
+
+  background: transparent;
 }
 
 .search-box input::placeholder {
@@ -186,22 +329,36 @@
 .header-right {
   display: flex;
   align-items: center;
+
   gap: 20px;
+
+  flex-shrink: 0;
 }
 
 .notification-button {
   position: relative;
+
   background: transparent;
   color: #696371;
+
+  border: none;
+
+  padding: 4px;
+
+  cursor: pointer;
 }
 
 .notification-dot {
   width: 6px;
   height: 6px;
+
   background: #e04d65;
+
   border: 2px solid white;
   border-radius: 50%;
+
   position: absolute;
+
   top: -2px;
   right: -2px;
 }
@@ -209,164 +366,333 @@
 .header-admin {
   display: flex;
   align-items: center;
+
   gap: 8px;
 }
 
 .header-avatar {
   width: 31px;
   height: 31px;
+
   background: #eee9f8;
   color: #56339c;
+
   font-size: 11px;
 }
 
-/* DASHBOARD */
+
+/* ========================================
+   MOBILE HEADER BUTTON
+   ======================================== */
+
+.mobile-menu-button {
+  display: none;
+
+  align-items: center;
+  justify-content: center;
+
+  width: 36px;
+  height: 36px;
+
+  padding: 0;
+
+  background: transparent;
+
+  border: none;
+  border-radius: 6px;
+
+  color: #4a4652;
+
+  cursor: pointer;
+
+  flex-shrink: 0;
+}
+
+.mobile-menu-button:hover {
+  background: #f3f1f6;
+}
+
+
+/* ========================================
+   MOBILE SIDEBAR CLOSE BUTTON
+   ======================================== */
+
+.sidebar-close {
+  display: none;
+
+  align-items: center;
+  justify-content: center;
+
+  width: 34px;
+  height: 34px;
+
+  margin-left: auto;
+  padding: 0;
+
+  background: transparent;
+
+  border: none;
+  border-radius: 6px;
+
+  color: white;
+
+  cursor: pointer;
+
+  flex-shrink: 0;
+}
+
+.sidebar-close:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+
+/* ========================================
+   MOBILE SIDEBAR OVERLAY
+   ======================================== */
+
+.sidebar-overlay {
+  display: none;
+}
+
+
+/* ========================================
+   DASHBOARD / PAGE
+   ======================================== */
 
 .dashboard {
   padding: 25px 28px 35px;
+
+  width: 100%;
 }
 
 .page-heading {
   display: flex;
+
   justify-content: space-between;
   align-items: center;
+
+  gap: 15px;
+
   margin-bottom: 22px;
 }
 
 .page-heading h2 {
+  margin: 0;
+
   font-size: 21px;
   font-weight: 600;
+
   color: #292631;
 }
 
 .page-heading p {
+  margin: 5px 0 0;
+
   color: #85818d;
+
   font-size: 11px;
-  margin-top: 5px;
 }
 
 .primary-button {
   display: flex;
   align-items: center;
+
   gap: 7px;
+
   background: #6538bd;
   color: white;
+
   padding: 9px 14px;
+
   border-radius: 6px;
+  border: none;
+
   font-size: 11px;
   font-weight: 500;
+
+  cursor: pointer;
+
+  white-space: nowrap;
+
+  transition: background 0.2s ease;
 }
 
 .primary-button:hover {
   background: #5630a5;
 }
 
-/* STAT CARDS */
+
+/* ========================================
+   STAT CARDS
+   ======================================== */
 
 .stats-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+
+  grid-template-columns:
+    repeat(4, minmax(0, 1fr));
+
   gap: 15px;
+
   margin-bottom: 18px;
 }
 
 .stat-card {
   background: white;
+
   border: 1px solid #e8e5ec;
   border-radius: 8px;
+
   padding: 17px;
+
   min-height: 125px;
+  min-width: 0;
 }
 
 .stat-card-top {
   display: flex;
+
   justify-content: space-between;
   align-items: flex-start;
+
+  gap: 10px;
 }
 
 .stat-card p {
+  margin: 0 0 7px;
+
   font-size: 10px;
+
   color: #77727f;
-  margin-bottom: 7px;
 }
 
 .stat-card h2 {
+  margin: 0;
+
   font-size: 25px;
   font-weight: 600;
+
   color: #292631;
 }
 
 .stat-icon {
   width: 35px;
   height: 35px;
+
   border-radius: 7px;
+
   background: #eee9fa;
   color: #6338b9;
+
   display: flex;
   align-items: center;
   justify-content: center;
+
+  flex-shrink: 0;
 }
 
 .stat-subtitle {
   display: block;
+
   margin-top: 13px;
+
   color: #8d8993;
+
   font-size: 9px;
 }
 
-/* PANELS */
+
+/* ========================================
+   CONTENT PANELS
+   ======================================== */
 
 .content-grid {
   display: grid;
-  grid-template-columns: 1.55fr 1fr;
+
+  grid-template-columns:
+    minmax(0, 1.55fr)
+    minmax(0, 1fr);
+
   gap: 18px;
 }
 
 .panel {
   background: white;
+
   border: 1px solid #e8e5ec;
   border-radius: 8px;
+
   overflow: hidden;
+
+  min-width: 0;
 }
 
 .panel-header {
   padding: 17px 18px;
+
   border-bottom: 1px solid #eeeaf0;
+
   display: flex;
+
   justify-content: space-between;
   align-items: center;
+
+  gap: 12px;
 }
 
 .panel-header h3 {
+  margin: 0;
+
   font-size: 13px;
   font-weight: 600;
+
   color: #312d38;
 }
 
 .panel-header p {
+  margin: 4px 0 0;
+
   color: #918d96;
+
   font-size: 9px;
-  margin-top: 4px;
 }
 
 .view-all {
   display: flex;
   align-items: center;
+
   gap: 4px;
+
   background: transparent;
+
   color: #6538bd;
+
+  border: none;
+
   font-size: 9px;
   font-weight: 500;
+
+  cursor: pointer;
+
+  white-space: nowrap;
 }
 
-/* EVENTS */
+
+/* ========================================
+   EVENTS
+   ======================================== */
 
 .event-row {
   display: flex;
   align-items: center;
+
   gap: 11px;
+
   padding: 13px 18px;
+
   border-bottom: 1px solid #f0edf2;
+
+  min-width: 0;
 }
 
 .event-row:last-child {
@@ -376,62 +702,91 @@
 .event-icon {
   width: 35px;
   height: 35px;
+
   border-radius: 6px;
+
   background: #f0ecfa;
   color: #6338b9;
+
   display: flex;
   align-items: center;
   justify-content: center;
+
   flex-shrink: 0;
 }
 
 .event-info {
   flex: 1;
+
   min-width: 0;
 }
 
 .event-info strong {
   display: block;
+
   font-size: 10px;
   font-weight: 600;
+
   color: #38343e;
+
+  overflow: hidden;
+
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .event-meta {
   display: flex;
+
   gap: 12px;
+
   margin-top: 5px;
+
+  flex-wrap: wrap;
 }
 
 .event-meta span {
   display: flex;
   align-items: center;
+
   gap: 4px;
+
   color: #98939e;
+
   font-size: 8px;
 }
 
 .event-participants {
   text-align: right;
+
   min-width: 60px;
+
+  flex-shrink: 0;
 }
 
 .event-participants strong {
   display: block;
+
   font-size: 11px;
+
   color: #403b47;
 }
 
 .event-participants span {
   color: #98939e;
+
   font-size: 8px;
 }
 
 .status {
   padding: 5px 8px;
+
   border-radius: 12px;
+
   font-size: 8px;
   font-weight: 500;
+
+  white-space: nowrap;
 }
 
 .status.upcoming {
@@ -439,7 +794,10 @@
   background: #e8f6ef;
 }
 
-/* QUICK ACCESS */
+
+/* ========================================
+   QUICK ACCESS
+   ======================================== */
 
 .quick-access {
   padding: 5px 0;
@@ -447,14 +805,26 @@
 
 .quick-access button {
   width: 100%;
+
   background: transparent;
+
   display: flex;
   align-items: center;
+
   gap: 10px;
+
   text-align: left;
+
   padding: 12px 17px;
+
+  border: none;
   border-bottom: 1px solid #f0edf2;
+
   color: #8c8791;
+
+  cursor: pointer;
+
+  transition: background 0.2s ease;
 }
 
 .quick-access button:last-child {
@@ -468,45 +838,77 @@
 .quick-icon {
   width: 32px;
   height: 32px;
+
   border-radius: 6px;
+
   background: #f0ecfa;
   color: #6338b9;
+
   display: flex;
   align-items: center;
   justify-content: center;
+
+  flex-shrink: 0;
 }
 
 .quick-access button div:nth-child(2) {
   flex: 1;
+
+  min-width: 0;
 }
 
 .quick-access strong {
   display: block;
+
   color: #39353f;
+
   font-size: 10px;
   font-weight: 600;
 }
 
 .quick-access span {
   display: block;
+
   color: #96919b;
+
   font-size: 8px;
+
   margin-top: 3px;
 }
 
 .quick-access > button > svg {
   color: #aaa5ae;
+
+  flex-shrink: 0;
 }
 
-/* RESPONSIVE */
+
+/* ========================================
+   TABLET
+   701px - 1100px
+   ======================================== */
 
 @media (max-width: 1100px) {
+
   .sidebar {
     width: 210px;
   }
 
+  .top-header {
+    padding: 0 22px;
+  }
+
+  .dashboard {
+    padding: 24px 22px 32px;
+  }
+
+  .search-box {
+    width: 280px;
+  }
+
   .stats-grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
   }
 
   .content-grid {
@@ -514,50 +916,381 @@
   }
 }
 
+
+/* ========================================
+   MOBILE
+   700px AND BELOW
+   ======================================== */
+
 @media (max-width: 700px) {
-  .sidebar {
-    width: 65px;
-    padding: 15px 8px;
+
+  /* ----------------------------------------
+     LAYOUT
+     ---------------------------------------- */
+
+  .admin-layout {
+    display: block;
+
+    min-height: 100vh;
+    width: 100%;
   }
 
-  .brand div:not(.brand-logo),
-  .admin-profile div:not(.profile-avatar),
-  .nav-item span,
-  .nav-section-title {
-    display: none;
+  .main-area {
+    width: 100%;
+    min-width: 0;
   }
+
+
+  /* ----------------------------------------
+     SIDEBAR DRAWER
+     ---------------------------------------- */
+
+  .sidebar {
+    position: fixed;
+
+    top: 0;
+    left: 0;
+
+    width: 280px;
+    height: 100vh;
+
+    min-height: 100vh;
+
+    z-index: 1000;
+
+    padding: 20px 14px;
+
+    transform: translateX(-100%);
+
+    transition:
+      transform 0.25s ease;
+
+    box-shadow:
+      8px 0 25px rgba(0, 0, 0, 0.15);
+
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+
+  .sidebar.sidebar-open {
+    transform: translateX(0);
+  }
+
+
+  /* ----------------------------------------
+     SIDEBAR CONTENT
+     ---------------------------------------- */
 
   .brand {
-    justify-content: center;
-    padding: 4px 0 20px;
+    justify-content: flex-start;
+
+    padding: 4px 9px 20px;
+  }
+
+  .brand div:not(.brand-logo) {
+    display: block;
+  }
+
+  .brand h1 {
+    font-size: 17px;
+  }
+
+  .brand p {
+    font-size: 10px;
+  }
+
+  .sidebar-close {
+    display: flex;
   }
 
   .admin-profile {
-    justify-content: center;
+    justify-content: flex-start;
+
+    padding: 12px 10px;
+  }
+
+  .admin-profile div:not(.profile-avatar) {
+    display: block;
+  }
+
+  .nav-section-title {
+    display: block;
   }
 
   .nav-item {
-    justify-content: center;
-    padding: 10px;
+    justify-content: flex-start;
+
+    padding: 9px 11px;
   }
 
-  .dashboard {
-    padding: 20px 15px;
+  .nav-item span {
+    display: block;
   }
+
+
+  /* ----------------------------------------
+     OVERLAY
+     ---------------------------------------- */
+
+  .sidebar-overlay {
+    display: block;
+
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 999;
+
+    background:
+      rgba(18, 13, 35, 0.45);
+
+    backdrop-filter: blur(2px);
+  }
+
+
+  /* ----------------------------------------
+     HEADER
+     ---------------------------------------- */
 
   .top-header {
-    padding: 0 15px;
+    position: sticky;
+
+    top: 0;
+
+    z-index: 100;
+
+    height: 60px;
+
+    padding: 0 12px;
+
+    gap: 9px;
+  }
+
+  .mobile-menu-button {
+    display: flex;
   }
 
   .search-box {
-    width: 200px;
+    width: auto;
+
+    flex: 1;
+
+    min-width: 0;
+    max-width: none;
+
+    height: 35px;
   }
 
-  .stats-grid {
-    grid-template-columns: 1fr;
+  .header-right {
+    gap: 8px;
   }
 
   .header-admin {
     display: none;
+  }
+
+
+  /* ----------------------------------------
+     PAGE
+     ---------------------------------------- */
+
+  .dashboard {
+    width: 100%;
+
+    padding: 20px 14px 28px;
+  }
+
+  .page-heading {
+    align-items: flex-start;
+
+    gap: 12px;
+
+    margin-bottom: 18px;
+  }
+
+  .page-heading h2 {
+    font-size: 19px;
+  }
+
+  .page-heading p {
+    font-size: 10px;
+  }
+
+  .primary-button {
+    flex-shrink: 0;
+
+    padding: 8px 11px;
+
+    font-size: 10px;
+  }
+
+
+  /* ----------------------------------------
+     STAT CARDS
+     ---------------------------------------- */
+
+  .stats-grid {
+    grid-template-columns: 1fr;
+
+    gap: 12px;
+  }
+
+  .stat-card {
+    min-height: 110px;
+
+    padding: 15px;
+  }
+
+
+  /* ----------------------------------------
+     PANELS
+     ---------------------------------------- */
+
+  .content-grid {
+    grid-template-columns: 1fr;
+
+    gap: 14px;
+  }
+
+  .panel-header {
+    padding: 15px;
+  }
+
+
+  /* ----------------------------------------
+     EVENTS
+     ---------------------------------------- */
+
+  .event-row {
+    padding: 12px 14px;
+
+    gap: 9px;
+  }
+
+  .event-meta {
+    gap: 7px;
+
+    flex-wrap: wrap;
+  }
+
+  .event-participants {
+    min-width: 45px;
+  }
+
+  .status {
+    display: none;
+  }
+
+
+  /* ----------------------------------------
+     QUICK ACCESS
+     ---------------------------------------- */
+
+  .quick-access button {
+    padding: 11px 14px;
+  }
+}
+
+
+/* ========================================
+   SMALL PHONES
+   420px AND BELOW
+   ======================================== */
+
+@media (max-width: 420px) {
+
+  /* ----------------------------------------
+     HEADER
+     ---------------------------------------- */
+
+  .top-header {
+    padding: 0 9px;
+
+    gap: 7px;
+  }
+
+  .mobile-menu-button {
+    width: 34px;
+    height: 34px;
+  }
+
+  .search-box {
+    height: 34px;
+
+    padding: 0 9px;
+
+    gap: 7px;
+  }
+
+  .search-box input {
+    font-size: 10px;
+  }
+
+
+  /* ----------------------------------------
+     PAGE
+     ---------------------------------------- */
+
+  .dashboard {
+    padding: 17px 10px 24px;
+  }
+
+  .page-heading {
+    flex-direction: column;
+
+    align-items: flex-start;
+
+    gap: 8px;
+  }
+
+  .primary-button {
+    align-self: flex-start;
+  }
+
+
+  /* ----------------------------------------
+     STAT CARDS
+     ---------------------------------------- */
+
+  .stat-card {
+    padding: 14px;
+  }
+
+  .stat-card h2 {
+    font-size: 23px;
+  }
+
+
+  /* ----------------------------------------
+     EVENTS
+     ---------------------------------------- */
+
+  .event-row {
+    padding: 11px 10px;
+  }
+
+  .event-icon {
+    width: 32px;
+    height: 32px;
+  }
+
+  .event-info strong {
+    font-size: 9px;
+  }
+
+  .event-meta span {
+    font-size: 7px;
+  }
+
+  .event-participants {
+    min-width: 40px;
+  }
+
+  .event-participants strong {
+    font-size: 10px;
+  }
+
+  .event-participants span {
+    font-size: 7px;
   }
 }
