@@ -89,6 +89,11 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import AdminLayout from "./layouts/AdminLayout";
 import Dashboard from "./pages/admin/Dashboard";
 import Events from "./pages/admin/Events";
+import Volunteers from "./pages/admin/Volunteers";
+import Analysis from "./pages/admin/Analysis";
+import TaskProgress from "./pages/admin/TaskProgress";
+import Attendance from "./pages/admin/Attendance";
+import AddVolunteer from "./pages/admin/AddVolunteer";
 
 function App() {
   return (
@@ -97,6 +102,11 @@ function App() {
         <Routes>
           <Route path="/" element={<Dashboard />} />
           <Route path="/events" element={<Events />} />
+          <Route path="/volunteers" element={<Volunteers />} />
+          <Route path="/analysis" element={<Analysis />} />
+          <Route path="/tasks" element={<TaskProgress />} />
+          <Route path="/attendance" element={<Attendance />} />
+          <Route path="/add-volunteer" element={<AddVolunteer />} />
         </Routes>
       </AdminLayout>
     </BrowserRouter>

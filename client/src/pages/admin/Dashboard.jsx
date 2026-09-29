@@ -1,64 +1,99 @@
 import {
   CalendarDays,
   Users,
-  GraduationCap,
   ClipboardCheck,
+  MessageSquareText,
   ArrowUpRight,
   UserRoundPlus,
+  ListTodo,
 } from "lucide-react";
+import { Link } from "react-router-dom";
 
 import StatCard from "../../components/admin/StatCard";
 import UpcomingEvents from "../../components/admin/UpcomingEvents";
+import { events, users } from "../../mockData";
 
 function Dashboard() {
+  const totalEvents = events.length;
+
+  const totalVolunteers = users.filter(
+    (user) => user.role === "volunteer"
+  ).length;
+
+  const upcomingEvents = events.filter(
+    (event) => event.status === "upcoming"
+  );
+
+  /*
+    Average feedback and attendance are currently shown
+    using the existing frontend data.
+
+    These values can later be connected to backend data.
+  */
+  const averageFeedback = "4.3/5";
+  const averageAttendance = "82%";
+
   return (
     <main className="dashboard">
+
+      {/* PAGE HEADING */}
       <div className="page-heading">
         <div>
           <h2>Dashboard</h2>
           <p>Overview of your event management system</p>
         </div>
 
-        <button className="primary-button">
+        <Link
+          to="/add-volunteer"
+          className="primary-button"
+        >
           <UserRoundPlus size={17} />
           Add Volunteer
-        </button>
+        </Link>
       </div>
 
+      {/* STAT CARDS */}
       <section className="stats-grid">
+
         <StatCard
           title="Total Events"
-          value="24"
-          subtitle="8 upcoming events"
+          value={totalEvents}
+          subtitle={`${upcomingEvents.length} upcoming events`}
           icon={CalendarDays}
         />
 
         <StatCard
           title="Total Volunteers"
-          value="128"
-          subtitle="12 added this month"
+          value={totalVolunteers}
+          subtitle="Active volunteers"
           icon={Users}
         />
 
         <StatCard
-          title="Total Participants"
-          value="640"
-          subtitle="Across all events"
-          icon={GraduationCap}
+          title="Average Feedback"
+          value={averageFeedback}
+          subtitle="Across completed events"
+          icon={MessageSquareText}
         />
 
         <StatCard
           title="Average Attendance"
-          value="82%"
-          subtitle="↑ 6.4% from last month"
+          value={averageAttendance}
+          subtitle="Across all events"
           icon={ClipboardCheck}
         />
+
       </section>
 
+      {/* UPCOMING EVENTS + QUICK ACCESS */}
       <section className="content-grid">
+
+        {/* UPCOMING EVENTS */}
         <UpcomingEvents />
 
+        {/* QUICK ACCESS */}
         <div className="panel activity-panel">
+
           <div className="panel-header">
             <div>
               <h3>Quick Access</h3>
@@ -67,51 +102,52 @@ function Dashboard() {
           </div>
 
           <div className="quick-access">
-            <button>
-              <div className="quick-icon">
-                <CalendarDays size={18} />
-              </div>
-              <div>
-                <strong>Manage Events</strong>
-                <span>View and manage all events</span>
-              </div>
-              <ArrowUpRight size={16} />
-            </button>
 
-            <button>
+            {/* ATTENDANCE */}
+            <Link to="/attendance">
+              <div className="quick-icon">
+                <ClipboardCheck size={18} />
+              </div>
+
+              <div>
+                <strong>Attendance</strong>
+                <span>Manage volunteer attendance</span>
+              </div>
+
+              <ArrowUpRight size={16} />
+            </Link>
+
+            {/* TASK PROGRESS */}
+            <Link to="/tasks">
+              <div className="quick-icon">
+                <ListTodo size={18} />
+              </div>
+
+              <div>
+                <strong>Task Progress</strong>
+                <span>Manage volunteer tasks</span>
+              </div>
+
+              <ArrowUpRight size={16} />
+            </Link>
+
+            {/* VOLUNTEERS */}
+            <Link to="/volunteers">
               <div className="quick-icon">
                 <Users size={18} />
               </div>
+
               <div>
                 <strong>Volunteers</strong>
                 <span>View volunteer information</span>
               </div>
-              <ArrowUpRight size={16} />
-            </button>
 
-            <button>
-              <div className="quick-icon">
-                <GraduationCap size={18} />
-              </div>
-              <div>
-                <strong>Participants</strong>
-                <span>Check registered students</span>
-              </div>
               <ArrowUpRight size={16} />
-            </button>
+            </Link>
 
-            <button>
-              <div className="quick-icon">
-                <ClipboardCheck size={18} />
-              </div>
-              <div>
-                <strong>Attendance</strong>
-                <span>Track event attendance</span>
-              </div>
-              <ArrowUpRight size={16} />
-            </button>
           </div>
         </div>
+
       </section>
     </main>
   );
